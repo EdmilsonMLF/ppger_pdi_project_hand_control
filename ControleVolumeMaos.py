@@ -64,7 +64,7 @@ while True:
         cv2.circle(img, (cx, cy), 5, (0, 0, 255), cv2.FILLED)
         
         tamanho_linha = math.hypot(x2 - x1, y2 - y1) # tamanho da linha varia com a distância da mão para a câmera além da distancia entre os dedos
-        print(tamanho_linha)
+        #print(tamanho_linha)
         
         # criando efeito botão 
         if tamanho_linha < 40:
