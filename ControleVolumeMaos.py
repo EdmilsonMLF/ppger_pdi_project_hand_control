@@ -2,6 +2,7 @@
 import cv2
 import time
 import numpy as np
+import HandTrackingModule as htm
 
 ############################
 # Parmâmetros de operação
@@ -15,10 +16,17 @@ captura = cv2.VideoCapture(0)
 captura.set(3, wCam) # 3 = CAP_PROP_FRAME_WIDTH
 captura.set(4, hCam) # 4 = CAP_PROP_FRAME_HEIGHT
 
+
+detector = htm.handDetector()
+
+
+
 # operação do programa
 while True:
     success, img = captura.read() # teste de sucesso de captura
     
+    # detectar a mão
+    img = detector.findhands(img)
     # ajuste dop FrameRate
     tempo_captura = time.time()
     fps = 1/(tempo_captura - tempo_anterior)
