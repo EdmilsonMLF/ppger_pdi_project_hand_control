@@ -70,6 +70,15 @@ while True:
         if tamanho_linha < 40:
             cv2.circle(img, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
         
+        # converter o range da distancia entre os dedos e o range do volume do pc
+        # Range da mão 40 - 250
+        # Range do volume -63 - 0
+        ajuste_volume = np.interp(tamanho_linha, [40, 250], [VOLUME_MIN, VOLUME_MAX])  # novo range para controle do volume
+        ajuste_volume_tela = np.interp(tamanho_linha, [40, 250], [400, 150]) # novo range para apresentação em tela
+        ajuste_volume_percentual = np.interp(tamanho_linha, [40, 250], [0, 100]) # novo range para apresentação em tela
+        
+        print(tamanho_linha, ajuste_volume)
+        
         
         
     # ajuste dop FrameRate
