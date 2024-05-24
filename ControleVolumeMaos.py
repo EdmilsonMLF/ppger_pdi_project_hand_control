@@ -27,6 +27,14 @@ while True:
     
     # detectar a mão, enviando a imagem da camera para marcar os pontos da mão
     img = detector.findHands(img)
+    # detectar a posição da mão
+    lmList = detector.findPosition(img, draw=False)[0] # primeiro elemento tem os pontos da mão
+    if len(lmList) != 0:
+        #print(lmList[4], lmList[8])
+        
+        # capturando as cordenadas x, y da ponta do polegar[4] e do indicador[8]
+        x1, y1 = lmList[4][1], lmList[4][2]
+        x2, y2 = lmList[8][1], lmList[8][2]
     # ajuste dop FrameRate
     tempo_captura = time.time()
     fps = 1/(tempo_captura - tempo_anterior)
