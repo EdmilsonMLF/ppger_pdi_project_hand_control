@@ -4,12 +4,24 @@ import time
 import numpy as np
 import HandTrackingModule as htm
 import math
+# controle de audio com https://github.com/AndreMiras/pycaw
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
-############################
-# Parmâmetros de operação
+# parametros da biblioteca de audio
+devices = AudioUtilities.GetSpeakers()
+interface = devices.Activate( IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+volume = interface.QueryInterface(IAudioEndpointVolume)
+
+# Parmâmetros de operação da camera
 wCam, hCam = 640, 480 # largura e altura da captura
 tempo_anterior = 0
-############################
+
+#capturando volume mínimo e máximo do sistema
+VOLUME_RANGE = volume.GetVolumeRange()
+VOLUME_MIN = VOLUME_RANGE[0]
+VOLUME_MAX = VOLUME_RANGE[1]
+# volume.SetMasterVolumeLevel(-20.0, None)
 
 # checar se camera funciona, em caso de erro colocar id = 1; 0 = open default camera
 captura = cv2.VideoCapture(0) 
