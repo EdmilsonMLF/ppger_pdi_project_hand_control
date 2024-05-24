@@ -79,6 +79,11 @@ while True:
         
         print(tamanho_linha, ajuste_volume)
         
+        # ajustar o volume do sistema com os dedos
+        volume.SetMasterVolumeLevel(ajuste_volume, None)
+              
+     
+        
         
         
     # ajuste dop FrameRate
