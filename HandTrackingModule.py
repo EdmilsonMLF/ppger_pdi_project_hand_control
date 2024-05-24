@@ -11,6 +11,7 @@ import time
 import math
 
 class handDetector():
+    def __init__(self, mode=False, maxHands=1, detectionCon=1, trackCon=0.5):
         self.mode = mode
         self.maxHands = maxHands
         self.detectionCon = detectionCon
