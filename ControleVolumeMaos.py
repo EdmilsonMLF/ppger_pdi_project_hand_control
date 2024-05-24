@@ -83,6 +83,13 @@ while True:
         volume.SetMasterVolumeLevel(ajuste_volume, None)
               
      
+    # colocar o volume do sistema na imagem
+    cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3 ) 
+    cv2.rectangle(img, (50, int(ajuste_volume_tela)), (85, 400), (255, 0, 0), cv2.FILLED )  
+    
+    # apresenta % do volume na tela
+    cv2.putText(img, f'Volume: {int(ajuste_volume_percentual)} %', (40, 450),cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 3)
+        
         
         
         
