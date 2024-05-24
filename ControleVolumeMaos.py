@@ -3,6 +3,7 @@ import cv2
 import time
 import numpy as np
 import HandTrackingModule as htm
+import math
 
 ############################
 # Parmâmetros de operação
@@ -12,14 +13,11 @@ tempo_anterior = 0
 
 # checar se camera funciona, em caso de erro colocar id = 1; 0 = open default camera
 captura = cv2.VideoCapture(0) 
-
 captura.set(3, wCam) # 3 = CAP_PROP_FRAME_WIDTH
 captura.set(4, hCam) # 4 = CAP_PROP_FRAME_HEIGHT
 
 
 detector = htm.handDetector()
-
-
 
 # operação do programa
 while True:
@@ -35,10 +33,26 @@ while True:
         # capturando as cordenadas x, y da ponta do polegar[4] e do indicador[8]
         x1, y1 = lmList[4][1], lmList[4][2]
         x2, y2 = lmList[8][1], lmList[8][2]
+        cx, cy = (x1 + x2) // 2, (y1 + y2) // 2 # ponto médio da distancia entre a ponta dos dedos polegar e indicador
+        
         
         #criando circulos na ponta dos dedos
         cv2.circle(img, (x1, y1), 10, (0, 0, 255), cv2.FILLED)
         cv2.circle(img, (x2, y2), 10, (0, 0, 255), cv2.FILLED)
+        
+        # linha entre as pontas dos dedos
+        cv2.line(img, (x1, y1), (x2,y2), (255, 0, 255), 3)
+        cv2.circle(img, (cx, cy), 5, (0, 0, 255), cv2.FILLED)
+        
+        tamanho_linha = math.hypot(x2 - x1, y2 - y1) # tamanho da linha varia com a distância da mão para a câmera além da distancia entre os dedos
+        print(tamanho_linha)
+        
+        # criando efeito botão 
+        if tamanho_linha < 40:
+            cv2.circle(img, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
+        
+        
+        
     # ajuste dop FrameRate
     tempo_captura = time.time()
     fps = 1/(tempo_captura - tempo_anterior)
