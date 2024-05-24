@@ -17,6 +17,11 @@ volume = interface.QueryInterface(IAudioEndpointVolume)
 wCam, hCam = 640, 480 # largura e altura da captura
 tempo_anterior = 0
 
+# parametros iniciais de volume
+ajuste_volume = 0
+ajuste_volume_tela = 400
+ajuste_volume_percentual = 0
+
 #capturando volume mínimo e máximo do sistema
 VOLUME_RANGE = volume.GetVolumeRange()
 VOLUME_MIN = VOLUME_RANGE[0]
