@@ -35,6 +35,10 @@ while True:
         # capturando as cordenadas x, y da ponta do polegar[4] e do indicador[8]
         x1, y1 = lmList[4][1], lmList[4][2]
         x2, y2 = lmList[8][1], lmList[8][2]
+        
+        #criando circulos na ponta dos dedos
+        cv2.circle(img, (x1, y1), 10, (0, 0, 255), cv2.FILLED)
+        cv2.circle(img, (x2, y2), 10, (0, 0, 255), cv2.FILLED)
     # ajuste dop FrameRate
     tempo_captura = time.time()
     fps = 1/(tempo_captura - tempo_anterior)
