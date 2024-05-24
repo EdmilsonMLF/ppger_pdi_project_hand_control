@@ -43,6 +43,8 @@ while True:
         #print(lmList[4], lmList[8])
         
         # capturando as cordenadas x, y da ponta do polegar[4] e do indicador[8]
+        # manual: https://mediapipe.readthedocs.io/en/latest/solutions/hands.html
+        
         x1, y1 = lmList[4][1], lmList[4][2]
         x2, y2 = lmList[8][1], lmList[8][2]
         cx, cy = (x1 + x2) // 2, (y1 + y2) // 2 # ponto médio da distancia entre a ponta dos dedos polegar e indicador
