@@ -25,8 +25,8 @@ detector = htm.handDetector()
 while True:
     success, img = captura.read() # teste de sucesso de captura
     
-    # detectar a mão
-    img = detector.findhands(img)
+    # detectar a mão, enviando a imagem da camera para marcar os pontos da mão
+    img = detector.findHands(img)
     # ajuste dop FrameRate
     tempo_captura = time.time()
     fps = 1/(tempo_captura - tempo_anterior)
