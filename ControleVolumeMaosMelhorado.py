@@ -39,12 +39,12 @@ while True:
     # detectar a mão, enviando a imagem da camera para marcar os pontos da mão
     img = detector.findHands(img)
     # detectar a posição da mão
-    lmList = detector.findPosition(img, draw=False)[0] # primeiro elemento tem os pontos da mão
-    
+    lmList, bbox = detector.findPosition(img, draw=True) # primeiro elemento tem os pontos da mão
+
     if len(lmList) != 0:
         
         # Filtrar baseado no tamanho da mão
-        
+        print(bbox)
         # Encontrar a distancia entre polegar e indicador
         
         # Converter Volume
