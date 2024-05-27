@@ -60,13 +60,6 @@ while True:
             # Range do volume -63 - 0
         
         # novo range para controle do volume
-        ajuste_volume = np.interp(
-            tamanho_linha, 
-            [40, 250], 
-            [VOLUME_MIN, 
-             VOLUME_MAX]
-        )  
-        # novo range para apresentação em tela
         ajuste_volume_tela = np.interp(
             tamanho_linha, 
             [40, 250], 
@@ -79,6 +72,12 @@ while True:
             [0, 100]
         ) 
         
+        # Reduzir resolução para suavizar
+        suavizador = 10
+        ajuste_volume_percentual = suavizador * (ajuste_volume_percentual / suavizador)
+        # Verificar se os dedos estão para cima
+        
+        # Se mindinho esta para baixo para definir o volume
         # ajustar o volume do sistema com os dedos
         volume.SetMasterVolumeLevel(ajuste_volume, None)
               
