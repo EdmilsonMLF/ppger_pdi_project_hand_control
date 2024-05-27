@@ -22,6 +22,7 @@ tempo_anterior = 0
 ajuste_volume = 0
 ajuste_volume_tela = 400
 ajuste_volume_percentual = 0
+area = 0
 
 #capturando volume mínimo e máximo do sistema
 VOLUME_RANGE = volume.GetVolumeRange()
@@ -46,9 +47,13 @@ while True:
     if len(lmList) != 0:
         
         # Filtrar baseado no tamanho da mão
-        print(bbox)
-        # Encontrar a distancia entre polegar e indicador
-        
+        area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]) // 100
+
+        if 300 < area < 900:
+            print('sim')
+        # Encontrar a distancia entre polegar (4) e indicador (8)
+        tamanho_linha, img, coord_linha = detector.findDistance(4, 8, img)
+        print(tamanho_linha)
         # Converter Volume
         
         # Reduzir resolução para suavizar
