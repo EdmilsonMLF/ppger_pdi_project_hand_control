@@ -1,6 +1,6 @@
 """
 Hand Tracking Module
-By: Murtaza Hassan
+By: Murtaza Hassan - Adaptado por Edmilson Moreira
 Youtube: http://www.youtube.com/c/MurtazasWorkshopRoboticsandAI
 Website: https://www.computervision.zone
 """
