@@ -55,74 +55,9 @@ while True:
         tamanho_linha, img, coord_linha = detector.findDistance(4, 8, img)
         print(tamanho_linha)
         # Converter Volume
-        
-        # Reduzir resolução para suavizar
-        
-        # Verificar se os dedos estão para cima
-        
-        # Se mindinho esta para baixo para definir o volume
-        
-        # Desenhar na imagem
-        
-        # Imprimir FPS
-        
-        # capturando as cordenadas x, y da ponta do polegar[4] e do indicador[8]
-        # manual: https://mediapipe.readthedocs.io/en/latest/solutions/hands.html
-        x1 = lmList[4][1]
-        y1 = lmList[4][2]
-        x2 = lmList[8][1]
-        y2 = lmList[8][2]
-        # ponto médio da distancia entre a ponta dos dedos polegar e indicador
-        cx = (x1 + x2) // 2
-        cy = (y1 + y2) // 2
-        
-        #criando circulos na ponta dos dedos
-        cv2.circle(
-            img, 
-            (x1, y1), 
-            10, 
-            (0, 0, 255), 
-            cv2.FILLED
-        )
-        cv2.circle(
-            img, 
-            (x2, y2), 
-            10, 
-            (0, 0, 255), 
-            cv2.FILLED
-        )
-        
-        # linha entre as pontas dos dedos
-        cv2.line(
-            img, 
-            (x1, y1), 
-            (x2,y2), 
-            (255, 0, 255), 
-            3
-        )
-        cv2.circle(
-            img, 
-            (cx, cy), 
-            5, 
-            (0, 0, 255), 
-            cv2.FILLED
-        )
-        
-        tamanho_linha = math.hypot(x2 - x1, y2 - y1) # tamanho da linha varia com a distância da mão para a câmera além da distancia entre os dedos
-        
-        # criando efeito botão 
-        if tamanho_linha < 40:
-            cv2.circle(
-                img, 
-                (cx, cy), 
-                5, 
-                (0, 255, 0), 
-                cv2.FILLED
-            )
-        
-        # converter o range da distancia entre os dedos e o range do volume do pc
-        # Range da mão 40 - 250
-        # Range do volume -63 - 0
+            # converter o range da distancia entre os dedos e o range do volume do pc
+            # Range da mão 40 - 250
+            # Range do volume -63 - 0
         
         # novo range para controle do volume
         ajuste_volume = np.interp(
