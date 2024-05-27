@@ -110,14 +110,14 @@ class handDetector():
             cv2.circle(
                 img, 
                 (x1, y1), 
-                15, 
+                10, 
                 (255, 0, 255), 
                 cv2.FILLED
             )
             cv2.circle(
                 img, 
                 (x2, y2), 
-                15, 
+                10, 
                 (255, 0, 255), 
                 cv2.FILLED
             )
@@ -131,7 +131,7 @@ class handDetector():
             cv2.circle(
                 img, 
                 (cx, cy), 
-                15, 
+                10, 
                 (255, 0, 255), 
                 cv2.FILLED
             )
